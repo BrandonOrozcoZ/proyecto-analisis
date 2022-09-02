@@ -16,7 +16,7 @@ body{
 }
 
 #header{
-    width: 80vw;
+    width: 70vw;
     min-height: 200px;
     display: flex;
     flex-direction: column;
@@ -37,6 +37,6 @@ body{
     cursor: pointer;
 }
 
-.opcion:hover{
-    background: black;
+.option:hover{
+    background:lightgray;
 }

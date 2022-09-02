@@ -33,29 +33,27 @@ async function selectOption(index){
     if(flag){
         await Swal.fire({
             title:"Respuesta correcta",
-            text:"La respuesta es correcta",
+            html:"La respuesta es correcta",
             icon:"success",
         });
         score++;
     }else{
         await Swal.fire({
             title:"Respuesta incorrecta",
-            text: `La respuesta correcta es "${question.answer}"`,
+            html: `La respuesta correcta es "${question.answer}"`,
             icon:"error",
         });
     }
 
     QUESTION_INDEX++;
     if(QUESTION_INDEX >= questionBase.length){
-        
-        QUESTION_INDEX = 0;
-        
         await Swal.fire({
             title: "Quiz finalizado",
-            text: `Tu puntaje es: ${score}/${questionBase.length}`,
+            html: `Tu puntaje es: ${score}/${questionBase.length}`,
             icon: "success",
         });
         score = 0;
+        QUESTION_INDEX = 0;
     }
     loadQuestion(QUESTION_INDEX);
     
