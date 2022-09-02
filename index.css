@@ -5,7 +5,7 @@
 body{
     margin:0;
     padding:0;
-    background-image: url(https://i.ibb.co/TK673Rf/background-aesthetic.gif);
+    background-color: whitesmoke;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
@@ -13,6 +13,11 @@ body{
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+}
+
+#table{
+    display: flex;
+    flex-direction: column;
 }
 
 #header{
@@ -39,4 +44,25 @@ body{
 
 .option:hover{
     background:lightgray;
+}
+
+.progress {
+    height: 20px;
+    width: 70vw;
+    display: flex;
+    align-items: center;
+    border: 1px solid lightgray;
+    border-radius: 20px;
+    background-color: lightgray;
+    margin: 10px;
+}
+
+.progress-bar{
+    
+    height: 100%;
+    background: limegreen;
+    display: flex;
+    align-items: center;
+    transition: width 0.25s;
+    border-radius: 20px;
 }

@@ -1,7 +1,12 @@
+let QUESTION_COUNT = 2;
 let QUESTION_INDEX = 0;
 let score = 0;
 
 loadQuestion(QUESTION_INDEX);
+
+function loadProgressbar(){
+    document.getElementById("progress-bar").style.width = QUESTION_INDEX/QUESTION_COUNT * 100 + "%";
+}
 
 function loadQuestion(index){
     question = questionBase[index]
@@ -12,6 +17,7 @@ function loadQuestion(index){
     options.sort(() => Math.random() - 0.5);
 
     document.getElementById("question").innerHTML = question.question;
+    loadProgressbar();
     
     if(question.image){
         document.getElementById("image").src = question.image;
@@ -47,6 +53,7 @@ async function selectOption(index){
 
     QUESTION_INDEX++;
     if(QUESTION_INDEX >= questionBase.length){
+        loadProgressbar();
         await Swal.fire({
             title: "Quiz finalizado",
             html: `Tu puntaje es: ${score}/${questionBase.length}`,
