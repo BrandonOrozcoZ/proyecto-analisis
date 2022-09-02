@@ -1,0 +1,42 @@
+*{
+    transition: all 0.25s;
+}
+
+body{
+    margin:0;
+    padding:0;
+    background-image: url(https://i.ibb.co/TK673Rf/background-aesthetic.gif);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+#header{
+    width: 80vw;
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: white;
+    border-radius: 10px;
+    margin: 10px;
+    padding: 10px;
+}
+
+.option{
+    width: 70vw;
+    background: white;
+    border-radius: 10px;
+    margin: 10px;
+    padding: 10px; 
+    cursor: pointer;
+}
+
+.opcion:hover{
+    background: black;
+}
