@@ -10,14 +10,17 @@ body{
     background-size: cover;
     background-position: center center;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
 }
 
-#table{
+#bar{
+    width: 70vw;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
 
 #header{
@@ -30,11 +33,10 @@ body{
     background: white;
     border-radius: 10px;
     margin: 10px;
-    padding: 10px;
 }
 
 .option{
-    width: 70vw;
+    flex: auto;
     background: white;
     border-radius: 10px;
     margin: 10px;
@@ -46,10 +48,9 @@ body{
     background:lightgray;
 }
 
-.progress {
+.progress{
+    flex:1 1 auto;
     height: 20px;
-    width: 70vw;
-    display: flex;
     align-items: center;
     border: 1px solid lightgray;
     border-radius: 20px;
@@ -57,12 +58,19 @@ body{
     margin: 10px;
 }
 
+.progresstext-bar{
+    align-items: center;
+    margin: 5px;
+}
+
 .progress-bar{
-    
     height: 100%;
-    background: limegreen;
-    display: flex;
+    background: rgb(0, 177, 0);
     align-items: center;
     transition: width 0.25s;
     border-radius: 20px;
+}
+
+.text-bar{
+    font-family: 'Segoe UI';
 }

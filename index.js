@@ -6,6 +6,7 @@ loadQuestion(QUESTION_INDEX);
 
 function loadProgressbar(){
     document.getElementById("progress-bar").style.width = QUESTION_INDEX/QUESTION_COUNT * 100 + "%";
+    document.getElementById("text-bar").innerHTML = `${QUESTION_INDEX}/${QUESTION_COUNT}`;
 }
 
 function loadQuestion(index){
