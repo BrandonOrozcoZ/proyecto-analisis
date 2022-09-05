@@ -10,7 +10,7 @@ function loadProgressbar(){
 }
 
 function loadQuestion(index){
-    question = questionBase[index]
+    question = questionBase[index];
     let html = "";
     options = [...question.distractors];
     options.push(question.answer);
@@ -24,24 +24,26 @@ function loadQuestion(index){
     <img id="image" src="${question.image}" style="width:90%;height:100px;object-fit: contain;">
     </div>
 
-    <div>
-        <input type="radio" name="option" id="option1">
-        <label for="option1" id="label1">${options[0]}</label>
-    </div>
+    <div class="radio">
+        <div>
+            <input type="radio" name="option" id="option1">
+            <label for="option1" id="label1">${options[0]}</label>
+        </div>
 
-    <div>
-        <input type="radio" name="option" id="option2">
-        <label for="option2" id="label2">${options[1]}</label>
-    </div>
+        <div>
+            <input type="radio" name="option" id="option2">
+            <label for="option2" id="label2">${options[1]}</label>
+        </div>
 
-    <div>
-        <input type="radio" name="option" id="option3">
-        <label for="option3" id="label3">${options[2]}</label>
-    </div>
+        <div>
+            <input type="radio" name="option" id="option3">
+            <label for="option3" id="label3">${options[2]}</label>
+        </div>
 
-    <div>
-        <input type="radio" name="option" id="option4">
-        <label for="option4" id="label4">${options[3]}</label>
+        <div>
+            <input type="radio" name="option" id="option4">
+            <label for="option4" id="label4">${options[3]}</label>
+        </div>
     </div>`;
 
     document.getElementById("board").innerHTML = html;
