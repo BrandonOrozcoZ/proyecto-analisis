@@ -36,19 +36,6 @@ body{
     margin: 10px;
 }
 
-.option{
-    flex: auto;
-    background: white;
-    border-radius: 10px;
-    margin: 10px;
-    padding: 10px; 
-    cursor: pointer;
-}
-
-.option:hover{
-    background:lightgray;
-}
-
 .progress{
     flex:1 1 auto;
     height: 20px;
@@ -82,8 +69,13 @@ label{
     border-radius: 12px;
     border: 1px solid lightgray;
     margin: 10px;
-    padding: 10px;     
+    padding: 10px;
+    cursor: pointer;
     justify-content: center;
+}
+
+label:hover{
+    background-color: lightgray;
 }
 
 input[type="radio"]{
