@@ -16,6 +16,11 @@ body{
     min-height: 100vh;
 }
 
+#table{
+    display: grid;
+    grid-template-columns: 20% 70%;
+}
+
 #bar{
     width: 70vw;
     display: flex;
@@ -92,4 +97,51 @@ input[type="radio"]{
 .radio input[type="radio"]:checked + label{
     background-color: dodgerblue;
     border-bottom: 3px solid white;
+}
+
+
+.chart{
+    flex:1 1 auto;
+    align-items: center;
+}
+/*
+.chart h3{
+    color:#fff;
+    font-size: 1.8em;
+    position: absolute;
+    bottom:10px;
+    text-align: center;
+    width: 100%;
+    text-shadow: 1px 1px 10px #000;
+}
+.chart svg{
+    z-index: 2;
+}
+
+/* DIV CIRCULO DE FONDO */
+.circle{
+    width: 150px;
+    height:150px;
+    border-radius: 50%;
+    z-index:1;
+    border:10px #baeaff solid;
+}
+.text{
+    z-index: 3;
+    text-align: center;
+    width: 100%;
+    font-size: 3.8em;
+    font-weight: 700;
+    color:#0096da
+}
+/* SVG CIRCULO */
+.outer{
+    fill:transparent;
+    stroke: #0096da;
+    stroke-width: 10; /* grosor del borde */
+    stroke-dasharray: 439; /* numero de relleno del borde, se usa el mismo valor en el script.js */
+    transform: rotate(270deg) translate(-150px, 0); 
+    /* giramos el circulo para que su apertura sea en la parte superior 
+    y ajustamos su posicion
+    */
 }
