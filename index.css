@@ -101,12 +101,12 @@ input[type="radio"]{
     border-bottom: 3px solid white;
 }
 
-
+/*
 .chart{
     flex:1 1 auto;
     align-items: center;
 }
-/*
+
 .chart h3{
     color:#fff;
     font-size: 1.8em;
@@ -120,7 +120,7 @@ input[type="radio"]{
     z-index: 2;
 }
 
-/* DIV CIRCULO DE FONDO */
+/* DIV CIRCULO DE FONDO 
 .circle{
     width: 150px;
     height:150px;
@@ -136,14 +136,15 @@ input[type="radio"]{
     font-weight: 700;
     color:#0096da
 }
-/* SVG CIRCULO */
+/* SVG CIRCULO 
 .outer{
     fill:transparent;
     stroke: #0096da;
-    stroke-width: 10; /* grosor del borde */
-    stroke-dasharray: 439; /* numero de relleno del borde, se usa el mismo valor en el script.js */
+    stroke-width: 10; /* grosor del borde
+    stroke-dasharray: 439; /* numero de relleno del borde, se usa el mismo valor en el script.js
     transform: rotate(270deg) translate(-150px, 0); 
     /* giramos el circulo para que su apertura sea en la parte superior 
     y ajustamos su posicion
-    */
+    
 }
+*/

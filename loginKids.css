@@ -35,19 +35,19 @@ body {
 .search {
     position: fixed;
     top: 40%;
-    left: 50%;
+    left: 45%;
     -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
     border-radius: 1000px;
     width: 0;
     height: 0;
-    background: #03a9f4;
+    background: #ffc400;
     -webkit-transition: all 0.4s linear;
     transition: all 0.4s linear;
 }
   
 .search a {
-    color: #03a9f4;
+    color: #f40303;
     cursor: pointer;
     font-family: 'Segoe UI';
 }
@@ -56,10 +56,10 @@ body {
     min-height: auto;
 }
   
-.search .form .submit{
+.search #form .submit{
     position: absolute;
     top: 51.5%;
-    left: 50%;
+    left: 52%;
     -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
     width: 350px;
@@ -73,10 +73,10 @@ body {
     display: none;
 }
 
-.search .form .input{
+.search #form .input{
     position: absolute;
     top: 50%;
-    left: 50%;
+    left: 52%;
     -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
     width: 350px;

@@ -1,20 +1,52 @@
-import { saveResult, getRanking } from './firebase.js'
 
 let QUESTION_COUNT = 2;
 let QUESTION_INDEX = 0;
 let SCORE = 0;
 
+(function ($) {
+    var search_button = $(".btn"),
+      close_button = $(".close"),
+      input = $(".input"),
+      submit = $(".submit");
+    search_button.on("click", function () {
+      $(this).parent().addClass("open");
+      close_button.fadeIn(500);
+      input.fadeIn(500);
+      submit.fadeIn(500);
+    });
+  
+    close_button.on("click", function () {
+      search_button.parent().removeClass("open");
+      close_button.fadeOut(500);
+      input.fadeOut(500);
+      submit.fadeOut(500);
+    });
+})(jQuery);
+
+var name;
+/*const form = document.getElementById('form')
+form.addEventListener('submit', (e) => {
+    
+    name = document.getElementById("name").value;
+    console.log(name)
+    form.reset()
+    
+});*/
+
 loadQuestion(QUESTION_INDEX);
 
 function loadProgressbar(){
+    console.log(name)
     document.getElementById("progress-bar").style.width = QUESTION_INDEX/QUESTION_COUNT * 100 + "%";
     document.getElementById("text-bar").innerHTML = `${QUESTION_INDEX}/${QUESTION_COUNT}`;
 }
 
-function loadQuestion(index){
-    question = questionBase[index];
+async function loadQuestion(index){
+
+    console.log(name)
+    let question = questionBase[index];
     let html = "";
-    options = [...question.distractors];
+    let options = [...question.distractors];
     options.push(question.answer);
 
     options.sort(() => Math.random() - 0.5);
@@ -29,7 +61,7 @@ function loadQuestion(index){
     <div class="radio">
         <div>
             <input type="radio" name="option" id="option1">
-            <label for="option1" id="label1">${options[0]}</label>
+            <img id="label1" src="${options[0]}" style="width:90%;height:100px;object-fit: contain;">
         </div>
 
         <div>
@@ -86,9 +118,19 @@ async function selectOption(){
             html: `Tu puntaje es: ${SCORE}/${questionBase.length}`,
             icon: "success",
         });
+        saveResult();
         SCORE = 0;
         QUESTION_INDEX = 0;
+        window.open("/loginKids.html", "_self")
     }
     loadQuestion(QUESTION_INDEX);
     
+}
+
+async function saveResult() {
+    fs.collection("users").add({
+        name: "Brandon2",
+        score: SCORE,
+        time: 24,
+    });
 }

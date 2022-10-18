@@ -6,9 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Logical Funny Quiz</title>
 
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
     <link rel="icon" type="image/png" href="">
     <link rel="stylesheet" href="loginKids.css">
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+
 
     
 
@@ -27,19 +28,19 @@
     <div class="search" id="search">
 
         <div class="btn" style="margin: 20px">
-            <a class="btn btn-outline-primary">
+            <a class="btn btn-outline-danger">
                 <h4>Jugar!</h4>
             </a>
         </div>
 
-        <form action="/index.html" class="form">
+        <form action="index.html" id="form">
             <input type="text" placeholder="¿Cuál es tu nombre?" class="input" id="name">
-            <input type="submit" value="Inicar juego!" class="submit">
+            <input type="submit" value="Iniciar juego!" class="submit">
         </form>
         
     </div>
 
-      <script type="module" src="./loginKids.js"></script>
+      <script src="index.js"></script>
     
 </body>
 </html>
