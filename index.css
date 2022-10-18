@@ -17,8 +17,10 @@ body{
 }
 
 #table{
-    display: grid;
-    grid-template-columns: 20% 70%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 #bar{

@@ -1,3 +1,5 @@
+import { saveResult, getRanking } from './firebase.js'
+
 let QUESTION_COUNT = 2;
 let QUESTION_INDEX = 0;
 let SCORE = 0;
@@ -74,6 +76,10 @@ async function selectOption(){
     
     QUESTION_INDEX++;
     if(QUESTION_INDEX >= questionBase.length){
+        //Acá se guarda el intento y se reinicia el cuestionario
+
+        //saveResult(name, score, time)
+        //const querySnapshot = await getRanking()
         loadProgressbar();
         await Swal.fire({
             title: "Quiz finalizado",
