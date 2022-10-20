@@ -16,13 +16,6 @@ body{
     min-height: 100vh;
 }
 
-#table{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
 #bar{
     width: 70vw;
     display: flex;
@@ -101,50 +94,58 @@ input[type="radio"]{
     border-bottom: 3px solid white;
 }
 
-/*
-.chart{
-    flex:1 1 auto;
-    align-items: center;
+countdown-timer {
+    font-family: sans-serif;
+    display: block;;
+    position: relative;
+    width: 300px;
+    height: 300px;
 }
-
-.chart h3{
-    color:#fff;
-    font-size: 1.8em;
+  
+countdown-timer svg {
+    transform: scaleX(-1);
+}
+  
+countdown-timer g.timer-circle {
+    fill: none;
+    stroke: none;
+}
+  
+countdown-timer .path-elapsed {
+    stroke-width: 7px;
+    stroke: grey;
+}
+  
+countdown-timer .path-remaining {
+    stroke-width: 7px;
+    stroke-linecap: round;
+    transform: rotate(90deg);
+    transform-origin: center;
+    transition: 1s linear all;
+    fill-rule: nonzero;
+    stroke: currentColor;
+}
+  
+countdown-timer .path-remaining.green {
+    color: rgb(65, 184, 131);
+}
+ 
+countdown-timer .path-remaining.orange {
+    color: orange;
+}
+  
+countdown-timer .path-remaining.red {
+    color: red;
+}
+  
+countdown-timer span.label {
     position: absolute;
-    bottom:10px;
-    text-align: center;
-    width: 100%;
-    text-shadow: 1px 1px 10px #000;
+    width: 300px;
+    height: 300px;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 48px;
 }
-.chart svg{
-    z-index: 2;
-}
-
-/* DIV CIRCULO DE FONDO 
-.circle{
-    width: 150px;
-    height:150px;
-    border-radius: 50%;
-    z-index:1;
-    border:10px #baeaff solid;
-}
-.text{
-    z-index: 3;
-    text-align: center;
-    width: 100%;
-    font-size: 3.8em;
-    font-weight: 700;
-    color:#0096da
-}
-/* SVG CIRCULO 
-.outer{
-    fill:transparent;
-    stroke: #0096da;
-    stroke-width: 10; /* grosor del borde
-    stroke-dasharray: 439; /* numero de relleno del borde, se usa el mismo valor en el script.js
-    transform: rotate(270deg) translate(-150px, 0); 
-    /* giramos el circulo para que su apertura sea en la parte superior 
-    y ajustamos su posicion
-    
-}
-*/
+  
