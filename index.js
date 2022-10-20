@@ -1,4 +1,5 @@
 
+
 let QUESTION_COUNT = 2;
 let QUESTION_INDEX = 0;
 let SCORE = 0;
@@ -44,7 +45,7 @@ function loadProgressbar(){
 async function loadQuestion(index){
 
     console.log(name)
-    let question = questionBase[index];
+    question = questionBase[index];
     let html = "";
     let options = [...question.distractors];
     options.push(question.answer);
@@ -54,29 +55,28 @@ async function loadQuestion(index){
     html += `<div id="header">
                 
     <span id="question">${question.question}</span>
-    <br>
-    <img id="image" src="${question.image}" style="width:90%;height:100px;object-fit: contain;">
+    <img id="image" src="${question.image}" style="width:28%;height:400px;object-fit: contain;">
     </div>
 
     <div class="radio">
         <div>
             <input type="radio" name="option" id="option1">
-            <img id="label1" src="${options[0]}" style="width:90%;height:100px;object-fit: contain;">
+            <label for="option1" id="label1" align="center"><img id="image" src="${options[0]}" style="width:90%;height:100px;object-fit: contain;"></label>
         </div>
 
         <div>
             <input type="radio" name="option" id="option2">
-            <label for="option2" id="label2">${options[1]}</label>
+            <label for="option2" id="label2" align="center"><img id="image" src="${options[1]}" style="width:90%;height:100px;object-fit: contain;"></label>
         </div>
 
         <div>
             <input type="radio" name="option" id="option3">
-            <label for="option3" id="label3">${options[2]}</label>
+            <label for="option3" id="label3" align="center"><img id="image" src="${options[2]}" style="width:90%;height:100px;object-fit: contain;"></label>
         </div>
 
         <div>
             <input type="radio" name="option" id="option4">
-            <label for="option4" id="label4">${options[3]}</label>
+            <label for="option4" id="label4" align="center"><img id="image" src="${options[3]}" style="width:90%;height:100px;object-fit: contain;"></label>
         </div>
     </div>`;
 
@@ -99,7 +99,7 @@ async function selectOption(){
             }else{
                 await Swal.fire({
                     title:"Respuesta incorrecta",
-                    html: `La respuesta correcta es "${questionBase[QUESTION_INDEX].answer}"`,
+                    html: `La respuesta correcta es <img id="image" src="${questionBase[QUESTION_INDEX].answer}" style="width:90%;height:100px;object-fit: contain;">`,
                     icon:"error",
                 });
             }
@@ -131,6 +131,12 @@ async function saveResult() {
     fs.collection("users").add({
         name: "Brandon2",
         score: SCORE,
-        time: 24,
+        time: 24
+    })
+    .then((docRef) => {
+        console.log("Document written with ID: ", docRef.id);
+    })
+    .catch((error) => {
+        console.error("Error adding document: ", error);
     });
 }
