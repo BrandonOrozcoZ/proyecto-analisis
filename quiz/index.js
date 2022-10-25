@@ -1,7 +1,7 @@
-
-const TIME_LIMIT = 20;
+/*
+const TIME_LIMIT = 60;
 let timePassed = 0;
-let timeLeft = TIME_LIMIT;
+let timeLeft = TIME_LIMIT;*/
 
 let QUESTION_COUNT = 2;
 let QUESTION_INDEX = 0;
@@ -40,51 +40,49 @@ form.addEventListener('submit', (e) => {
 loadQuestion(QUESTION_INDEX);
 
 function loadProgressbar(){
-    console.log(name)
     document.getElementById("progress-bar").style.width = QUESTION_INDEX/QUESTION_COUNT * 100 + "%";
     document.getElementById("text-bar").innerHTML = `${QUESTION_INDEX}/${QUESTION_COUNT}`;
 }
 
 async function loadQuestion(index){
+  question = questionBase[index];
+  let html = "";
+  let options = [...question.distractors];
+  options.push(question.answer);
 
-    console.log(name)
-    question = questionBase[index];
-    let html = "";
-    let options = [...question.distractors];
-    options.push(question.answer);
+  options.sort(() => Math.random() - 0.5);
 
-    options.sort(() => Math.random() - 0.5);
-
-    html += `<div id="header">
+  html += `<div id="header">
                 
-    <span id="question">${question.question}</span>
-    <img id="image" src="${question.image}" style="width:28%;height:400px;object-fit: contain;">
+    <h4 id="question">${question.question}</h4>
+    <img id="image" src="${question.image}" style="width:40%;height:400px;object-fit: contain;">
+  </div>
+
+  <div class="radio">
+    <div>
+      <input type="radio" name="option" id="option1">
+      <label for="option1" id="label1" align="center"><img id="image1" src="${options[0]}" style="width:90%;height:100px;object-fit: contain;"></label>
     </div>
 
-    <div class="radio">
-        <div>
-            <input type="radio" name="option" id="option1">
-            <label for="option1" id="label1" align="center"><img id="image1" src="${options[0]}" style="width:90%;height:100px;object-fit: contain;"></label>
-        </div>
+    <div>
+      <input type="radio" name="option" id="option2">
+      <label for="option2" id="label2" align="center"><img id="image2" src="${options[1]}" style="width:90%;height:100px;object-fit: contain;"></label>
+    </div>
 
-        <div>
-            <input type="radio" name="option" id="option2">
-            <label for="option2" id="label2" align="center"><img id="image2" src="${options[1]}" style="width:90%;height:100px;object-fit: contain;"></label>
-        </div>
+    <div>
+      <input type="radio" name="option" id="option3">
+      <label for="option3" id="label3" align="center"><img id="image3" src="${options[2]}" style="width:90%;height:100px;object-fit: contain;"></label>
+    </div>
 
-        <div>
-            <input type="radio" name="option" id="option3">
-            <label for="option3" id="label3" align="center"><img id="image3" src="${options[2]}" style="width:90%;height:100px;object-fit: contain;"></label>
-        </div>
+    <div>
+      <input type="radio" name="option" id="option4">
+      <label for="option4" id="label4" align="center"><img id="image4" src="${options[3]}" style="width:90%;height:100px;object-fit: contain;"></label>
+    </div>
+  </div>`;
 
-        <div>
-            <input type="radio" name="option" id="option4">
-            <label for="option4" id="label4" align="center"><img id="image4" src="${options[3]}" style="width:90%;height:100px;object-fit: contain;"></label>
-        </div>
-    </div>`;
-
-    document.getElementById("board").innerHTML = html;
-    loadProgressbar();
+  document.getElementById("board").innerHTML = html;
+  loadProgressbar();
+  CountdownTimer.start()
 }
 
 async function selectOption(){
@@ -154,8 +152,8 @@ class CountdownTimer extends HTMLElement {
       super()
   
       this.FULL_DASH_ARRAY = 283;
-      this.WARNING_THRESHOLD = 10;
-      this.ALERT_THRESHOLD = 5;
+      this.WARNING_THRESHOLD = 30;
+      this.ALERT_THRESHOLD = 10;
   
       this.COLOR_CODES = {
         info: {
@@ -226,14 +224,9 @@ class CountdownTimer extends HTMLElement {
     }
   
     formatTime(time) {
-      const minutes = Math.floor(time / 60);
-      let seconds = time % 60;
-    
-      if (seconds < 10) {
-        seconds = `0${seconds}`;
-      }
-    
-      return `${minutes}:${seconds}`; 
+      let seconds = time;
+  
+      return `${seconds}`; 
     }
   
     calculateTimeFraction() {
@@ -285,6 +278,6 @@ class CountdownTimer extends HTMLElement {
     disconnectedCallback(){
   
     }
-  }
+}
   
-  customElements.define('countdown-timer', CountdownTimer)
+customElements.define('countdown-timer', CountdownTimer)

@@ -98,8 +98,8 @@ countdown-timer {
     font-family: sans-serif;
     display: block;;
     position: relative;
-    width: 300px;
-    height: 300px;
+    width: 150px;
+    height: 150px;
 }
   
 countdown-timer svg {
@@ -140,12 +140,12 @@ countdown-timer .path-remaining.red {
   
 countdown-timer span.label {
     position: absolute;
-    width: 300px;
-    height: 300px;
+    width: 150px;
+    height: 150px;
     top: 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 48px;
+    font-size: 40px;
 }
   
