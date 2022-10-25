@@ -24,7 +24,7 @@ const form = document.getElementById('form')
 
 form.addEventListener('submit', (e) => {
     e.preventDefault();
-    window.open("../quiz/index.html", "_self");
+    window.open("./quiz.html", "_self");
     
 });
 

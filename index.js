@@ -329,7 +329,7 @@ async function selectOption(){
     
     SCORE = 0;
     QUESTION_INDEX = 0;
-    window.open("../loginKids/loginKids.html", "_self");
+    window.open("./index.html", "_self");
   }
   loadQuestion(QUESTION_INDEX);
 }
