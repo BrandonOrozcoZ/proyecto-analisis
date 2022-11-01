@@ -225,15 +225,6 @@ class CountdownTimer extends HTMLElement {
 
 customElements.define("countdown-timer", CountdownTimer);
 
-/*const form = document.getElementById('form')
-form.addEventListener('submit', (e) => {
-    
-    name = document.getElementById("name").value;
-    console.log(name)
-    form.reset()
-    
-});*/
-
 window.addEventListener("DOMContentLoaded", () => {
   loadQuestion(QUESTION_INDEX);
   console.log(name)
