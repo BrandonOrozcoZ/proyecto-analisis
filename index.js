@@ -50,7 +50,7 @@ let questionBase = [
   },
   {
     question:
-      "¿Cuál es el orden de llegada?",
+      "El auto azul comienza la carrera en la última posición, en la primera curva adelanta el auto amarillo, en la tercera curva el auto rojo queda en último lugar, en la recta el amarillo sobrepasa el azul y finalizando la carrera el auto azul y el auto rojo adelantan al amarillo. ¿En qué posición finalizaron la carrera los tres autos?",
     image:
       "https://i.ibb.co/QCf1H2v/Pregunta3.png",
     answer: "https://i.ibb.co/8MqWRdg/Correcta.png",
@@ -79,12 +79,11 @@ let questionBase = [
       "¿Cuánto da el resultado de la última operación?",
     image:
       "https://i.ibb.co/sbjGBWw/Pregunta5.png",
-    answer: "8",
-
+    answer: "https://i.ibb.co/6PnHM4q/Correcta.png",
     distractors: [
-      "6",
-      "10",
-      "16",
+      "https://i.ibb.co/gJbc34v/Incorrecta1.png",
+      "https://i.ibb.co/M9dcqFF/Incorrecta2.png",
+      "https://i.ibb.co/mH75Y6f/Incorrecta3.png",
     ],
   },
 ];

@@ -8,7 +8,9 @@
   
 body {
     background: #263238;
-    position: relative;
+    background-image: url("https://i.ibb.co/t2nXCwV/Portada.gif");
+    background-repeat: no-repeat;
+    background-size: cover;
 }
   
 .close {
