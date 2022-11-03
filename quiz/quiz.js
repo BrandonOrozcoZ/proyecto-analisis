@@ -6,22 +6,37 @@ import {
 } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-firestore.js";
 
 const firebaseConfig = {
-    apiKey: "AIzaSyDZRPGtD-zXfKYRy-98FwmFlD3WEZisKno",
-    authDomain: "logicalfunnyquiz.firebaseapp.com",
-    projectId: "logicalfunnyquiz",
-    storageBucket: "logicalfunnyquiz.appspot.com",
-    messagingSenderId: "109271917334",
-    appId: "1:109271917334:web:92a74c465c489e78816637"
+  apiKey: "AIzaSyDZRPGtD-zXfKYRy-98FwmFlD3WEZisKno",
+  authDomain: "logicalfunnyquiz.firebaseapp.com",
+  projectId: "logicalfunnyquiz",
+  storageBucket: "logicalfunnyquiz.appspot.com",
+  messagingSenderId: "109271917334",
+  appId: "1:109271917334:web:92a74c465c489e78816637",
 };
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
 const db = getFirestore(app);
 
+var paramstr = window.location.search.substr(1);
+var paramarr = paramstr.split("&");
+var params = {};
+
+for (var i = 0; i < paramarr.length; i++) {
+  var tmparr = paramarr[i].split("=");
+  params[tmparr[0]] = tmparr[1];
+}
+if (params["name"]) {
+  console.log("El valor del parámetro variable es: " + params["name"]);
+} else {
+  console.log("No se envió el parámetro variable");
+}
+const name = params["name"];
+
 const saveKid = (name, score, time) => {
   addDoc(collection(db, "users"), { name, score, time });
-  console.log(collection(db, "users"))
-}
+  console.log(collection(db, "users"));
+};
 
 let questionBase = [
   {
@@ -36,10 +51,8 @@ let questionBase = [
     ],
   },
   {
-    question:
-      "¿Qué número sigue en la secuencia?",
-    image:
-      "https://i.ibb.co/hm89Hzp/Pregunta.png",
+    question: "¿Qué número sigue en la secuencia?",
+    image: "https://i.ibb.co/hm89Hzp/Pregunta.png",
     answer: "https://i.ibb.co/9tQnFDf/Correcta.png",
 
     distractors: [
@@ -51,8 +64,7 @@ let questionBase = [
   {
     question:
       "El auto azul comienza la carrera en la última posición, en la primera curva adelanta el auto amarillo, en la tercera curva el auto rojo queda en último lugar, en la recta el amarillo sobrepasa el azul y finalizando la carrera el auto azul y el auto rojo adelantan al amarillo. ¿En qué posición finalizaron la carrera los tres autos?",
-    image:
-      "https://i.ibb.co/QCf1H2v/Pregunta3.png",
+    image: "https://i.ibb.co/QCf1H2v/Pregunta3.png",
     answer: "https://i.ibb.co/8MqWRdg/Correcta.png",
 
     distractors: [
@@ -62,10 +74,8 @@ let questionBase = [
     ],
   },
   {
-    question:
-      "¿Qué piezas faltan para completar el rompecabezas?",
-    image:
-      "https://i.ibb.co/D4FBK4P/Pregunta.png",
+    question: "¿Qué piezas faltan para completar el rompecabezas?",
+    image: "https://i.ibb.co/D4FBK4P/Pregunta.png",
     answer: "https://i.ibb.co/LkTtMpM/Correcta.png",
 
     distractors: [
@@ -75,10 +85,8 @@ let questionBase = [
     ],
   },
   {
-    question:
-      "¿Cuánto da el resultado de la última operación?",
-    image:
-      "https://i.ibb.co/sbjGBWw/Pregunta5.png",
+    question: "¿Cuánto da el resultado de la última operación?",
+    image: "https://i.ibb.co/sbjGBWw/Pregunta5.png",
     answer: "https://i.ibb.co/6PnHM4q/Correcta.png",
     distractors: [
       "https://i.ibb.co/gJbc34v/Incorrecta1.png",
@@ -87,7 +95,6 @@ let questionBase = [
     ],
   },
 ];
-const name = document.getElementById('name')
 let QUESTION_COUNT = questionBase.length;
 let QUESTION_INDEX = 0;
 let SCORE = 0;
@@ -178,8 +185,7 @@ class CountdownTimer extends HTMLElement {
       seconds = `0${seconds}`;
     }
 
-    return `${minutes}:${seconds}`; 
-
+    return `${minutes}:${seconds}`;
   }
 
   calculateTimeFraction() {
@@ -226,7 +232,6 @@ customElements.define("countdown-timer", CountdownTimer);
 
 window.addEventListener("DOMContentLoaded", () => {
   loadQuestion(QUESTION_INDEX);
-  console.log(name)
 });
 
 function loadProgressbar() {
@@ -238,7 +243,6 @@ function loadProgressbar() {
 }
 
 async function loadQuestion(index) {
-  
   var question = questionBase[index];
   let html = "";
   let options = [...question.distractors];
@@ -278,12 +282,11 @@ async function loadQuestion(index) {
   loadProgressbar();
 }
 
-const optionButton = document.getElementById('optionButton')
+const optionButton = document.getElementById("optionButton");
 
-optionButton.addEventListener('click', selectOption)
+optionButton.addEventListener("click", selectOption);
 
-async function selectOption(){
-
+async function selectOption() {
   for (let i = 1; i <= 4; i++) {
     if (document.getElementById(`option${i}`).checked) {
       let txt = document.getElementById(`image${i}`).src;
@@ -310,17 +313,16 @@ async function selectOption(){
     //Acá se guarda el intento y se reinicia el cuestionario
     //const querySnapshot = await getRanking()
     loadProgressbar();
-    saveKid("Brandon", SCORE, time);
+    saveKid(name, SCORE, time);
     await Swal.fire({
       title: "Quiz finalizado",
       html: `Tu puntaje es: ${SCORE}/${questionBase.length}`,
       icon: "success",
     });
-    
+
     SCORE = 0;
     QUESTION_INDEX = 0;
-    window.open("./index.html", "_self");
+    window.open("../login/index.html", "_self");
   }
   loadQuestion(QUESTION_INDEX);
 }
-
