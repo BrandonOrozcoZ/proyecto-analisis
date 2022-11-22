@@ -20,12 +20,12 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
 const table = document.getElementById("table");
-let html = `<tr id="tr">
-<th>Nombre:</th>
-<th>Puntaje:</th> 
-<th>Tiempo (seg):</th>
-</tr>
-`;
+let html = `<ul class="list-group list-group-horizontal list-group-flush">
+<li class="list-group-item col"><span style="font-family: 'Lucida Sans Unicode'; font-weight: bold;">Nombre</span></li>
+<li class="list-group-item col"><span style="font-family: 'Lucida Sans Unicode'; font-weight: bold;">Tiempo (seg)</span></li>
+<li class="list-group-item col"><span style="font-family: 'Lucida Sans Unicode'; font-weight: bold;">Puntaje</span></li>
+<li></li>
+</ul><br />`;
 
 window.addEventListener("DOMContentLoaded", () => {
   loadTable();
@@ -41,12 +41,10 @@ async function loadTable() {
 }
 
 const addTable = (data) => {
-  console.log(data);
   html += `
-    <tr>
-        <td>${data.name}</td>
-        <td>${data.score}</td>
-        <td>${data.time}</td>
-    </tr>`;
-  
+  <ul class="list-group list-group-horizontal">
+    <li class="list-group-item col"><span style="font-family: 'Segoe UI'">${data.name}</span></li>
+    <li class="list-group-item col"><span style="font-family: 'Segoe UI'">${data.time}</span></li>
+    <li class="list-group-item col"><span style="font-family: 'Segoe UI'">${data.score}</span></li>
+  </ul>  `;
 };

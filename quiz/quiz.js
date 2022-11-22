@@ -26,77 +26,16 @@ for (var i = 0; i < paramarr.length; i++) {
   var tmparr = paramarr[i].split("=");
   params[tmparr[0]] = tmparr[1];
 }
-if (params["name"]) {
-  console.log("El valor del parámetro variable es: " + params["name"]);
-} else {
-  console.log("No se envió el parámetro variable");
-}
+
 const name = params["name"];
 
 const saveKid = (name, score, time) => {
   addDoc(collection(db, "users"), { name, score, time });
-  console.log(collection(db, "users"));
 };
 
-let questionBase = [
-  {
-    question: "¿Qué camino debe realizar el carro para llegar a la meta?",
-    image: "https://i.ibb.co/2S1kRM7/Laberinto.jpg",
-    answer: "https://i.ibb.co/FWjMxjv/Correcta.png",
-
-    distractors: [
-      "https://i.ibb.co/tCg5z1S/Incorrecta1.png",
-      "https://i.ibb.co/5KtTgDp/Incorrecta2.png",
-      "https://i.ibb.co/BnpMMRQ/Incorrecta3.png",
-    ],
-  },
-  {
-    question: "¿Qué número sigue en la secuencia?",
-    image: "https://i.ibb.co/hm89Hzp/Pregunta.png",
-    answer: "https://i.ibb.co/9tQnFDf/Correcta.png",
-
-    distractors: [
-      "https://i.ibb.co/bRrTqds/Incorrecta3.png",
-      "https://i.ibb.co/C6Zt0HH/Incorrecta2.png",
-      "https://i.ibb.co/k0SnVmv/Incorrecta1.png",
-    ],
-  },
-  {
-    question:
-      "El auto azul comienza la carrera en la última posición, en la primera curva adelanta el auto amarillo, en la tercera curva el auto rojo queda en último lugar, en la recta el amarillo sobrepasa el azul y finalizando la carrera el auto azul y el auto rojo adelantan al amarillo. ¿En qué posición finalizaron la carrera los tres autos?",
-    image: "https://i.ibb.co/QCf1H2v/Pregunta3.png",
-    answer: "https://i.ibb.co/8MqWRdg/Correcta.png",
-
-    distractors: [
-      "https://i.ibb.co/VBPzNtb/Incorrecta1.png",
-      "https://i.ibb.co/3YW8fNg/Incorrecta2.png",
-      "https://i.ibb.co/sbzVt1S/Incorrecta3.png",
-    ],
-  },
-  {
-    question: "¿Qué piezas faltan para completar el rompecabezas?",
-    image: "https://i.ibb.co/D4FBK4P/Pregunta.png",
-    answer: "https://i.ibb.co/LkTtMpM/Correcta.png",
-
-    distractors: [
-      "https://i.ibb.co/2s7WTHP/Incorrecta1.png",
-      "https://i.ibb.co/BNyryF1/Incorrecta2.png",
-      "https://i.ibb.co/yQt59NL/Incorrecta3.png",
-    ],
-  },
-  {
-    question: "¿Cuánto da el resultado de la última operación?",
-    image: "https://i.ibb.co/sbjGBWw/Pregunta5.png",
-    answer: "https://i.ibb.co/6PnHM4q/Correcta.png",
-    distractors: [
-      "https://i.ibb.co/gJbc34v/Incorrecta1.png",
-      "https://i.ibb.co/M9dcqFF/Incorrecta2.png",
-      "https://i.ibb.co/mH75Y6f/Incorrecta3.png",
-    ],
-  },
-];
-let QUESTION_COUNT = questionBase.length;
+const QUESTION_COUNT = questionBase.length;
 let QUESTION_INDEX = 0;
+let DIFICULT_INDEX = 0;//Math.floor(Math.random() * 5);
 let SCORE = 0;
 let time = 0;
 
@@ -157,6 +96,7 @@ class CountdownTimer extends HTMLElement {
 
   onTimesUp() {
     clearInterval(this.timerInterval);
+    finish("time");
   }
 
   startTimer() {
@@ -243,7 +183,7 @@ function loadProgressbar() {
 }
 
 async function loadQuestion(index) {
-  var question = questionBase[index];
+  var question = questionBase[index][DIFICULT_INDEX];
   let html = "";
   let options = [...question.distractors];
   options.push(question.answer);
@@ -290,19 +230,29 @@ async function selectOption() {
   for (let i = 1; i <= 4; i++) {
     if (document.getElementById(`option${i}`).checked) {
       let txt = document.getElementById(`image${i}`).src;
-      if (questionBase[QUESTION_INDEX].answer.trim() == txt.trim()) {
+      if (
+        questionBase[QUESTION_INDEX][DIFICULT_INDEX].answer.trim() == txt.trim()
+      ) {
         await Swal.fire({
           title: "Respuesta correcta",
           html: "La respuesta es correcta",
           icon: "success",
         });
+        /* if (DIFICULT_INDEX < 4) {
+          DIFICULT_INDEX++;
+        } */
+
         SCORE++;
       } else {
         await Swal.fire({
           title: "Respuesta incorrecta",
-          html: `La respuesta correcta es <img id="image" src="${questionBase[QUESTION_INDEX].answer}" style="width:90%;height:100px;object-fit: contain;">`,
+          html: `La respuesta correcta es <img id="image" src="${questionBase[QUESTION_INDEX][DIFICULT_INDEX].answer}" style="width:90%;height:100px;object-fit: contain;">`,
           icon: "error",
         });
+
+        /* if (DIFICULT_INDEX > 0) {
+          DIFICULT_INDEX--;
+        } */
       }
       //const timer = new CountdownTimer();
     }
@@ -311,18 +261,29 @@ async function selectOption() {
   QUESTION_INDEX++;
   if (QUESTION_INDEX >= questionBase.length) {
     //Acá se guarda el intento y se reinicia el cuestionario
-    //const querySnapshot = await getRanking()
     loadProgressbar();
-    saveKid(name, SCORE, time);
-    await Swal.fire({
-      title: "Quiz finalizado",
-      html: `Tu puntaje es: ${SCORE}/${questionBase.length}`,
-      icon: "success",
-    });
-
-    SCORE = 0;
-    QUESTION_INDEX = 0;
-    window.open("../index.html", "_self");
+    finish();
+  }else{
+    loadQuestion(QUESTION_INDEX);
   }
-  loadQuestion(QUESTION_INDEX);
+  
+}
+
+async function finish(message) {
+  if (message == "time") {
+    message = "Oh no! Se acabó el tiempo";
+  } else {
+    message = "Quiz finalizado";
+  }
+
+  saveKid(name, SCORE, time);
+  await Swal.fire({
+    title: message,
+    html: `Tu puntaje es: ${SCORE}/${questionBase.length}`,
+    icon: "success",
+  });
+
+  SCORE = 0;
+  QUESTION_INDEX = 0;
+  window.open("../index.html", "_self");
 }
