@@ -27,7 +27,11 @@ for (var i = 0; i < paramarr.length; i++) {
   params[tmparr[0]] = tmparr[1];
 }
 
-const name = params["name"];
+var name = params["name"].trim().toLowerCase().replace("%20", " ");
+
+name = name.charAt(0).toUpperCase() + name.slice(1);
+name = name.replace("%c3%b1", "ñ")
+
 
 const saveKid = (name, score, time) => {
   addDoc(collection(db, "users"), { name, score, time });
@@ -275,8 +279,8 @@ async function finish(message) {
   } else {
     message = "Quiz finalizado";
   }
-
-  await saveKid(name, SCORE, time);
+  console.log(name)
+  saveKid(name, SCORE, time);
   await Swal.fire({
     title: message,
     html: `Tu puntaje es: ${SCORE}/${questionBase.length}`,
