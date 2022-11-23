@@ -23,7 +23,7 @@ let questionBase = [
     }],
     [{
       question:
-        "El auto azul comienza la carrera en la última posición, en la primera curva adelanta el auto amarillo, en la tercera curva el auto rojo queda en último lugar, en la recta el amarillo sobrepasa el azul y finalizando la carrera el auto azul y el auto rojo adelantan al amarillo. ¿En qué posición finalizaron la carrera los tres autos?",
+        "El auto azul comienza la carrera en la última posición, en la primera curva adelanta al auto amarillo, en la tercera curva el auto rojo queda en último lugar, en la recta el amarillo sobrepasa el azul y finalizando la carrera el auto azul y el auto rojo adelantan al amarillo. ¿En qué posición finalizaron la carrera los tres autos?",
       image: "https://i.ibb.co/QCf1H2v/Pregunta3.png",
       answer: "https://i.ibb.co/8MqWRdg/Correcta.png",
   
