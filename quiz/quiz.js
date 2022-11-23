@@ -193,28 +193,28 @@ async function loadQuestion(index) {
   html += `<div id="header">
                 
     <h4 id="question">${question.question}</h4>
-    <img id="image" src="${question.image}" style="width:29%;height:400px;object-fit: contain;">
+    <img id="image" src="${question.image}">
   </div>
 
   <div class="radio">
     <div>
       <input type="radio" name="option" id="option1">
-      <label for="option1" id="label1" align="center"><img id="image1" src="${options[0]}" style="width:90%;height:100px;object-fit: contain;"></label>
+      <label for="option1" id="label1" align="center"><img class="answers" id="image1" src="${options[0]}"></label>
     </div>
 
     <div>
       <input type="radio" name="option" id="option2">
-      <label for="option2" id="label2" align="center"><img id="image2" src="${options[1]}" style="width:90%;height:100px;object-fit: contain;"></label>
+      <label for="option2" id="label2" align="center"><img class="answers" id="image2" src="${options[1]}"></label>
     </div>
 
     <div>
       <input type="radio" name="option" id="option3">
-      <label for="option3" id="label3" align="center"><img id="image3" src="${options[2]}" style="width:90%;height:100px;object-fit: contain;"></label>
+      <label for="option3" id="label3" align="center"><img class="answers" id="image3" src="${options[2]}"></label>
     </div>
 
     <div>
       <input type="radio" name="option" id="option4">
-      <label for="option4" id="label4" align="center"><img id="image4" src="${options[3]}" style="width:90%;height:100px;object-fit: contain;"></label>
+      <label for="option4" id="label4" align="center"><img class="answers" id="image4" src="${options[3]}"></label>
     </div>
   </div>`;
 

@@ -11,7 +11,8 @@
       type="text/javascript"
     ></script>
     <link rel="icon" type="image/png" href="" />
-    <link rel="stylesheet" href="loginKids.css" />
+    <link rel="stylesheet" href="loginKids-cellphone.css" media="(min-width: 350px)"/>
+    <link rel="stylesheet" href="loginKids-desktop.css" media="(min-width:800px)"/>
 
     <link
       rel="stylesheet"
@@ -29,11 +30,9 @@
     </div>
 
     <div class="search" id="search">
-      <div class="btn" style="margin: 20px">
-        <a class="btn btn-outline-danger">
+        <button id="init" class="btn btn-outline-danger">
           <h4>Jugar!</h4>
-        </a>
-      </div>
+        </button>
 
       <form id="form">
         <input
@@ -42,8 +41,8 @@
           class="input"
           id="name"
         />
-        <input type="submit" value="Iniciar juego!" class="submit"/>
-        <button id="teacher" type="button" onclick="getTeacherview()" class="btn btn-outline-primary">Soy profesor</button>
+        <button id="play" type="button" onclick ="getQuizView()" class="btn btn-primary">Iniciar juego!</button>
+        <button id="teacher" type="button" onclick="getTeacherview()" class="btn btn-primary">Soy profesor</button>
       </form>
     </div>
 

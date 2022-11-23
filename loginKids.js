@@ -1,8 +1,8 @@
 (function ($) {
-  var search_button = $(".btn"),
+  var search_button = $("#init"),
     close_button = $(".close"),
     input = $(".input"),
-    submit = $(".submit"),
+    submit = $("#play"),
     button = $("#teacher");
   search_button.on("click", function () {
     $(this).parent().addClass("open");
@@ -22,13 +22,20 @@
 })(jQuery);
 
 
-const form = document.getElementById('form')
+/* const form = document.getElementById('form')
 
 form.addEventListener('submit', (e) => {
   e.preventDefault();
   const name = document.getElementById('name');
   const child = name.value
   window.open("../quiz/quiz.html?name=" + child, "_self");
+}); */
+
+const play = document.getElementById('play')
+
+play.addEventListener('click', (e) => {
+  e.preventDefault();
+  window.open("../quiz/quiz.html", "_self");  
 });
 
 const teacher = document.getElementById('teacher')
