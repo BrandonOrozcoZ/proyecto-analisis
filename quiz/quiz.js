@@ -276,7 +276,7 @@ async function finish(message) {
     message = "Quiz finalizado";
   }
 
-  saveKid(name, SCORE, time);
+  await saveKid(name, SCORE, time);
   await Swal.fire({
     title: message,
     html: `Tu puntaje es: ${SCORE}/${questionBase.length}`,

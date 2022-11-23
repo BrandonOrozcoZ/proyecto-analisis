@@ -43,8 +43,15 @@ async function loadTable() {
 const addTable = (data) => {
   html += `
   <ul class="list-group list-group-horizontal">
-    <li class="list-group-item col"><span style="font-family: 'Segoe UI'">${data.name}</span></li>
+    <li class="list-group-item col" ><span style="font-family: 'Segoe UI'">${data.name}</span></li>
     <li class="list-group-item col"><span style="font-family: 'Segoe UI'">${data.time}</span></li>
     <li class="list-group-item col"><span style="font-family: 'Segoe UI'">${data.score}</span></li>
   </ul>  `;
 };
+
+const index = document.getElementById('index')
+
+index.addEventListener('click', (e) => {
+  e.preventDefault();
+  window.open("../index.html", "_self");  
+});

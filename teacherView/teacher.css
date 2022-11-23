@@ -1,0 +1,15 @@
+#index {
+    margin: 10px;
+    margin-left: 50%;
+    transform: translateX(-50%);
+}
+
+.container{
+    justify-content: center center;
+    align-items: center;
+}
+
+li{
+    min-width: 20vw;
+    display: flex;
+}
