@@ -34,8 +34,9 @@ form.addEventListener('submit', (e) => {
 const play = document.getElementById('play')
 
 play.addEventListener('click', (e) => {
-  e.preventDefault();
-  window.open("../quiz/quiz.html", "_self");  
+  const name = document.getElementById('name');
+  const child = name.value
+  window.open("../quiz/quiz.html?name=" + child, "_self"); 
 });
 
 const teacher = document.getElementById('teacher')
